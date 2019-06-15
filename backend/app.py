@@ -2,7 +2,7 @@ from flask import Flask, render_template, Response, request, jsonify
 # from camera import VideoCamera
 import time
 from flask_cors import CORS
-from file_system import write_photo
+from file_system import *
 
 
 app = Flask(__name__)
@@ -20,7 +20,9 @@ def add_blog_ajax():
         image = request.json['image']
         name = request.json['name']
         write_photo(name, image)
+        print(data)
         return "Done"
+
 
 @app.route('/admin', methods=['POST', 'GET'])
 def get_users_data():
@@ -36,7 +38,9 @@ def get_users_data():
             }
         ]
         print(jsonify(data))
+        # return render_template('admin.html', data=data)
         return (jsonify(data))
+    
 
 def gen(camera):
     while True:

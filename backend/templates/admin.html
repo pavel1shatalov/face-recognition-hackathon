@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
-    <!-- Bootstrap CSS -->
+     <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <style>
@@ -20,7 +19,7 @@
     <div class="maxim-the-best">
       <div class="container">
 
-        <img src="./logo.png" class="img-fluid" alt="ReadyGoLogo">
+        <img src="../static/logo.png" class="img-fluid" alt="ReadyGoLogo">
 
         <div class="p-3 mb-2 bg-light text-dark">
           <h2 class="text-center">Admin section</h2>
@@ -40,7 +39,7 @@
             <div id="my_camera" width=\"550px\" height=\"550px\></div>
         </div>
 
-        <table class="table">
+        <table class="table" id="usersTable">
 
           <thead class="thead-dark">
             <tr>
@@ -49,7 +48,6 @@
               <th scope="col">Status</th>
             </tr>
           </thead>
-
           <tbody>
             <tr class="table-success">
               <th scope="row">1</th>
@@ -76,7 +74,8 @@
 
       </div>
     </div>
-     <script src="../public/scripts/get_admin_data.js"></script>
+     <script src="../static/scripts/get_admin_data.js"></script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
