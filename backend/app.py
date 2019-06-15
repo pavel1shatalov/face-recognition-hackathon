@@ -3,6 +3,7 @@ from flask import Flask, render_template, Response, request
 import time
 from flask_cors import CORS
 from file_system import write_photo
+import face_recognition_knn as fkn
 
 app = Flask(__name__)
 CORS(app)
@@ -12,15 +13,19 @@ CORS(app)
 def index():
     return render_template('index.html')
 
+
 @app.route('/registration', methods=['POST', 'GET'])
 def add_blog_ajax():
     if request.method == 'POST':
         image = request.json['image']
         name = request.json['name']
-        print(image)
-        print(name)
         write_photo(name, image)
         return "Done"
+
+
+def finish_registraion():
+    fkn.train('./train_dir', model_save_path='faces_prediction_model.pckl')
+
 
 def gen(camera):
     while True:
