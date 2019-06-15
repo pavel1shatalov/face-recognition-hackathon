@@ -1,6 +1,8 @@
 import os
 import base64
 
+# initializing global
+data = {}
 
 def write_photo(name, txt, photo_num=1):
     txt = txt[23:]
@@ -16,3 +18,5 @@ def write_photo(name, txt, photo_num=1):
 
     with open(os.path.join("train_dir", name, f"{name}{photo_num}.jpg"), "wb") as f:
         f.write(base64.b64decode(txt))
+
+    data[name] = False
