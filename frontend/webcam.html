@@ -44,7 +44,7 @@
             $.ajax({
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
-                url: "http://0.0.0.0:5000/blog/add/ajax",
+                url: "http://0.0.0.0:5000/registration",
                 data: JSON.stringify({image: data_uri, name: document.getElementById("name").value}),
                 success: function (data) {
                     console.log("success")

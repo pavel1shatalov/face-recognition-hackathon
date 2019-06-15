@@ -13,7 +13,7 @@ def index():
 
 
 
-@app.route('/blog/add/ajax', methods=['POST', 'GET'])
+@app.route('/registration', methods=['POST', 'GET'])
 def add_blog_ajax():
     if request.method == 'POST':
         image = request.json['image']
