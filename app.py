@@ -1,14 +1,26 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 from camera import VideoCamera
 import time
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
+
+@app.route('/blog/add/ajax', methods=['POST', 'GET'])
+def add_blog_ajax():
+    if request.method == 'POST':
+        image = request.json['image']
+        name = request.json['name']
+        print(image)
+        print(name)
+        return "Done"
 
 def gen(camera):
     while True:
