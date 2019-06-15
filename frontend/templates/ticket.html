@@ -25,15 +25,16 @@
         <h2>Registration</h2>
         </BR>
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Your Name</span>
+        <form class="needs-validation" novalidate>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Your Name</span>
+            </div>
+            <input type="text" id="name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1" required>
+            <button type="submit"  onClick="take_snapshot()" class="btn btn-success">Take a photo</button></BR>
+  <!--          <input type=button value="Take Snapshot" onClick="take_snapshot()">-->
           </div>
-          <input type="text" id="name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
-          <button type="button"  onClick="take_snapshot()" class="btn btn-success">Take a photo</button></BR>
-<!--          <input type=button value="Take Snapshot" onClick="take_snapshot()">-->
-        </div>
-
+        </form>
         <div id="results" style="display: none"></div>
         </BR>
         <div class="embed-responsive embed-responsive-16by9">
@@ -41,6 +42,29 @@
         </div>
       </div>
     </div>
+
+    <script>
+    // Валидация ввода
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
+
     <script language="JavaScript">
 
       Webcam.set({
