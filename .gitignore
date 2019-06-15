@@ -18,3 +18,4 @@ package-lock.json
 *.sln
 venv/
 __pycache__/
+train_dir/
