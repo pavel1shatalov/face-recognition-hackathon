@@ -4,6 +4,7 @@ import time
 from flask_cors import CORS
 from file_system import write_photo
 
+
 app = Flask(__name__)
 CORS(app)
 
@@ -12,13 +13,12 @@ CORS(app)
 def index():
     return render_template('index.html')
 
+
 @app.route('/registration', methods=['POST', 'GET'])
 def add_blog_ajax():
     if request.method == 'POST':
         image = request.json['image']
         name = request.json['name']
-        print(image)
-        print(name)
         write_photo(name, image)
         return "Done"
 
@@ -49,7 +49,6 @@ def gen(camera):
 def video_feed():
     return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
