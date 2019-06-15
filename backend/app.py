@@ -22,6 +22,7 @@ def add_blog_ajax():
         write_photo(name, image)
         return "Done"
 
+
 @app.route('/admin', methods=['POST', 'GET'])
 def get_users_data():
     if request.method == 'GET':
@@ -36,7 +37,9 @@ def get_users_data():
             }
         ]
         print(jsonify(data))
+        # return render_template('admin.html', data=data)
         return (jsonify(data))
+    
 
 def gen(camera):
     while True:
