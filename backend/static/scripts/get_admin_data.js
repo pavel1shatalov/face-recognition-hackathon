@@ -8,6 +8,7 @@ $.ajax({
              backend_data.forEach( (element, index) => {
                  console.log(divs[index]);
                     divs[index].style.display = "block";
+                    divs[index].getElementsByClassName("name")[0].innerHTML = element["name"]
                  // console.log(el);
                  console.log(element["name"])
              })
