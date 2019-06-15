@@ -1,23 +1,27 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <vue-webcam ref='webcam'></vue-webcam>
+    <hr/>
+    <img :src="photo" alt="" style="width:400px;height:300px" />
+    <hr/>
+    <button type="button" @click="take_photo">Take Photo</button>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App',
-};
+  import VueWebcam from 'vue-webcam';
+  export default {
+    name: 'App',
+    components: { VueWebcam },
+    data () {
+      return {
+        photo: null
+      };
+    },
+    methods: {
+      take_photo () {
+        this.photo = this.$refs.webcam.getPhoto();
+      }
+    }
+  };
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

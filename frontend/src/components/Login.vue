@@ -1,53 +1,32 @@
 <template>
-    
+  <div>
+    <vue-webcam ref='webcam'></vue-webcam>
+    <hr/>
+    <img :src="photo" alt="" style="width:400px;height:300px" />
+    <hr/>
+    <button type="button" @click="take_photo">Take Photo</button>
+  </div>
 </template>
 
 <script>
+  import VueWebcam from 'vue-webcam';
+
     export default {
         name: "Login",
-      data() {
+      components: { VueWebcam },
+      data () {
         return {
-          video: {},
-          canvas: {},
-          captures: []
-        }
-      },
-      mounted() {
-        this.video = this.$refs.video;
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-          navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-            this.video.src = window.URL.createObjectURL(stream);
-            this.video.play();
-          });
-        }
+          photo: null
+        };
       },
       methods: {
-        capture() {
-          this.canvas = this.$refs.canvas;
-          var context = this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480);
-          this.captures.push(canvas.toDataURL("image/png"));
+        take_photo () {
+          this.photo = this.$refs.webcam.getPhoto();
         }
       }
     }
 </script>
 
 <style scoped>
-  body: {
-    background-color: #F0F0F0;
-  }
-  #app {
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
-  #video {
-    background-color: #000000;
-  }
-  #canvas {
-    display: none;
-  }
-  li {
-    display: inline;
-    padding: 5px;
-  }
+
 </style>
