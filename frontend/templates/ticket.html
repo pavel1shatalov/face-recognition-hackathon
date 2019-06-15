@@ -8,25 +8,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <style>
-
-      h2 {
-        color: #0000CD;
-      }
-
-    </style>
-
     <title>ReadyGoRegistration</title>
+      <style>
+          #before {
+              display: flex;
+          }
+          #my_camera {
+            position: center;
+          }
+      </style>
   </head>
   <body>
     <div class="maxim-the-best">
       <div class="container">
-
         <img src="./logo.png" class="img-fluid" alt="ReadyGoLogo">
 
         <div class="p-3 mb-2 bg-light text-dark">
-          <h2 class="text-center">Registration to event</h2>
+          <h2 style="color: #0000CD;" class="text-center">Registration to event</h2>
         </div>
         </BR>
 
@@ -42,8 +40,8 @@
         </form>
         <div id="results" style="display: none"></div>
         </BR>
-        <div class="embed-responsive embed-responsive-16by9">
-          <div id="my_camera" width=\"550px\" height=\"550px\></div>
+        <div id="before">
+          <div id="my_camera"></div>
         </div>
       </div>
     </div>
@@ -70,37 +68,7 @@
     })();
     </script>
 
-    <script language="JavaScript">
-
-      Webcam.set({
-        width: 320,
-        height: 240,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-      });
-      Webcam.attach( '#my_camera' );
-
-      <!-- Code to handle taking the snapshot and displaying it locally -->
-      function take_snapshot() {
-        // take snapshot and get image data
-        Webcam.snap(function (data_uri) {
-          console.log(data_uri)
-          // display results in page
-          document.getElementById('results').innerHTML =
-                  '<img src="' + data_uri + '"/>';
-          console.log("before ajax")
-          $.ajax({
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            url: "http://0.0.0.0:5000/registration",
-            data: JSON.stringify({image: data_uri, name: document.getElementById("name").value}),
-            success: function (data) {
-              console.log("success")
-            },
-            dataType: "json"
-          });
-        });
-      }
+    <script language="JavaScript" src="../public/scripts/snapshot.js">
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
