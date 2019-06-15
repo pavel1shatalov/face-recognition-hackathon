@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <script type="text/javascript" src="../webcamjs/webcam.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -16,7 +17,7 @@
     <title>ReadyGoRegistration</title>
   </head>
   <body>
-    <div class"maxim-the-best">
+    <div class="maxim-the-best">
       <div class="container">
 
         <img src="./logo.png" class="img-fluid" alt="ReadyGoLogo">
@@ -28,21 +29,54 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Your Name</span>
           </div>
-          <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
-          <button type="button" class="btn btn-success">Take a photo</button></BR>
+          <input type="text" id="name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+          <button type="button"  onClick="take_snapshot()" class="btn btn-success">Take a photo</button></BR>
+<!--          <input type=button value="Take Snapshot" onClick="take_snapshot()">-->
         </div>
 
-
+        <div id="results" style="display: none"></div>
         </BR>
         <div class="embed-responsive embed-responsive-16by9">
-          <iframe name=\"videobox\" src='lala' width=\"550px\" height=\"550px\"></iframe>
+          <div id="my_camera" width=\"550px\" height=\"550px\></div>
         </div>
       </div>
     </div>
+    <script language="JavaScript">
+
+      Webcam.set({
+        width: 320,
+        height: 240,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+      });
+      Webcam.attach( '#my_camera' );
+
+      <!-- Code to handle taking the snapshot and displaying it locally -->
+      function take_snapshot() {
+        // take snapshot and get image data
+        Webcam.snap(function (data_uri) {
+          console.log(data_uri)
+          // display results in page
+          document.getElementById('results').innerHTML =
+                  '<img src="' + data_uri + '"/>';
+          console.log("before ajax")
+          $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "http://0.0.0.0:5000/blog/add/ajax",
+            data: JSON.stringify({image: data_uri, name: document.getElementById("name").value}),
+            success: function (data) {
+              console.log("success")
+            },
+            dataType: "json"
+          });
+        });
+      }
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
