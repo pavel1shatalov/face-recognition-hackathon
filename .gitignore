@@ -17,3 +17,5 @@ package-lock.json
 *.njsproj
 *.sln
 venv/
+__pycache__/
+train_dir/

@@ -10,7 +10,7 @@ CORS(app)
 
 @app.route('/')
 def index():
-    return render_template('')
+    return render_template('index.html')
 
 @app.route('/registration', methods=['POST', 'GET'])
 def add_blog_ajax():
