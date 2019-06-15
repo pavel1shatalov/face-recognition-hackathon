@@ -1,5 +1,5 @@
 from flask import Flask, render_template, Response, request
-from camera import VideoCamera
+# from camera import VideoCamera
 import time
 from flask_cors import CORS
 
@@ -9,9 +9,7 @@ CORS(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-
+    return render_template('')
 
 @app.route('/registration', methods=['POST', 'GET'])
 def add_blog_ajax():
