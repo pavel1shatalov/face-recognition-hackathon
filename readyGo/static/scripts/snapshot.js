@@ -26,5 +26,4 @@
             dataType: "json"
           });
         });
-       location.href='0.0.0.0:5000/done';
       }

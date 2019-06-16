@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response, request, jsonify
+from flask import Flask, render_template, Response, request, jsonify, redirect, url_for
 # from camera import VideoCamera
 import time
 from flask_cors import CORS
@@ -30,7 +30,10 @@ def add_blog_ajax():
         name = request.json['name']
         write_photo(name, image)
         print(data)
-        return "Done"
+        print("redirect")
+        return redirect(url_for('done'))
+    if request.method == 'GET':
+        return render_template('ticket.html')
 
 
 @app.route('/admin', methods=['POST', 'GET'])
