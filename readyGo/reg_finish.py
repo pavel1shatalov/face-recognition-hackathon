@@ -14,9 +14,10 @@ def finish_registraion():
         ret, frame = video_capture.read()
         cv2.imwrite('res.png', frame)
         res = fkn.predict('res.png', knn_clf=knn_clf)
-        data[res[0]] = True
+        for dictt in data:
+            if dictt['name'] == res[0]:
+                dictt['available'] = 1
         if data != data_prev:
             requests.post('http://localhost:5000/admin', json=data)
-
 
 # finish_registraion()

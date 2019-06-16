@@ -22,4 +22,4 @@ def write_photo(name, txt, photo_num=1):
         f.write(base64.b64decode(txt))
     data.append({'name': name,
                  'available': 0})
-    requests.post('http://localhost:5000/admin', json=data)
+    # requests.post('http://localhost:5000/admin', json=data)
