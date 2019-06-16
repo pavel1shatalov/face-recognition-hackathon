@@ -40,6 +40,17 @@ def add_blog_ajax():
         return render_template('ticket.html')
 
 
+@app.route('/admin_data', methods=['POST', 'GET'])
+def get_users():
+    if request.method == 'POST':
+        print("GET in admin")
+        print(jsonify(fs.data))
+        finish_registraion()
+        # return render_template('admin.html', data=data)
+        return json.dumps(fs.data)
+
+
+
 @app.route('/admin', methods=['POST', 'GET'])
 def get_users_data():
     if request.method == 'GET':
@@ -60,7 +71,7 @@ def get_users_data():
                 finish_registraion()
             return "done"
         except AttributeError:
-
+            print("qwertyuicvbnmfghjkk")
             print(request.data)
             return "done"
 

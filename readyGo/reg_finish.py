@@ -18,10 +18,19 @@ def finish_registraion():
         return
     print(res)
     print(data)
-    for user_tup in res:
-        name = user_tup[0]
-        if name == 'unknown':
-            continue
-        user_dict = next((item for item in data if item['name'] == name), False)
-        user_dict['available'] = 1
+    # for user_tup in res:
+    #     name = user_tup[0]
+    #     if name == 'unknown':
+    #         continue
+    #     user_dict = next((item for item in data if item['name'] == name), False)
+    #     if user_dict:
+    #         user_dict['available'] = 1
+    #     else:
+    #         user_dict['available'] = 0
+    for user_dict in data:
+        table = set(item[0] for item in res)
+        if user_dict['name'] in table:
+            user_dict['available'] = 1
+        else:
+            user_dict['available'] = 0
     video_capture.release()
