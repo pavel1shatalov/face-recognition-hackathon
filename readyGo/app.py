@@ -17,7 +17,7 @@ def index():
     return render_template('ticket.html')
 
 
-@app.route('/done')
+@app.route('/done', methods=['POST', 'GET'])
 def done():
     return render_template('ticket_done.html')
 
