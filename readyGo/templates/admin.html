@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>#}
+   <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <style>
+
+
+    </style>
+
+    <title>ReadyGoReAdmin</title>
+  </head>
+  <body>
+    <div class="maxim-the-best">
+      <div class="container">
+
+        <img src="../static/logo.png" class="img-fluid" alt="ReadyGoLogo">
+
+        <div class="p-3 mb-2 bg-light text-dark">
+          <h2 class="text-center">Admin section</h2>
+        </div>
+        </BR>
+
+        <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+          <label class="btn btn-success active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> Start registration
+          </label>
+          <label class="btn btn-danger" id="stop_reg">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Stop registration
+          </label>
+        </div>
+
+        <div class="embed-responsive embed-responsive-16by9">
+            <div id="my_camera" width=\"550px\" height=\"550px\></div>
+        </div>
+
+        <table class="table" id="usersTable">
+
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-danger rty" id="0i" style=" visibility: hidden">
+              <th scope="row">1</th>
+              <td class="name">Mark</td>
+              <td class="position">stay out</td>
+            </tr>
+            <tr class="table-danger rty" id="1i" style=" visibility: hidden">
+              <th scope="row">2</th>
+              <td class="name" >Jacob</td>
+              <td class="position">stay out</td>
+            </tr>
+            <tr class="table-danger rty" id="2i" style=" visibility: hidden">
+              <th scope="row">3</th>
+              <td class="name">Person 1</td>
+              <td class="position">stay out</td>
+            </tr>
+            <tr class="table-danger rty" id="3i" style=" visibility: hidden">
+              <th scope="row">3</th>
+              <td class="name">Person 1</td>
+              <td class="position">stay out</td>
+            </tr>
+            <tr class="table-danger rty" id="4i" style=" visibility: hidden">
+              <th scope="row">3</th>
+              <td class="name">Person 1</td>
+              <td class="position">stay out</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        </BR>
+
+      </div>
+    </div>
+     <script src="../static/scripts/get_admin_data.js"></script>
+     <script src="../static/scripts/finish_registration.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{#    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>#}
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
