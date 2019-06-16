@@ -3,6 +3,7 @@ $.ajax({
             url: "http://0.0.0.0:5000/admin",
             success:(backend_data) => {
                 console.log(backend_data);
+                backend_data = JSON.parse(backend_data);
                 console.log("did get to fetch data");
                 let divs = document.getElementsByClassName("rty");
              backend_data.forEach( (element, index) => {
