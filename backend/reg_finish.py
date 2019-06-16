@@ -7,7 +7,7 @@ from file_system import data
 
 
 def finish_registraion():
-    knn_clf = fkn.train('./train_dir', model_save_path='faces_prediction_model.pckl', verbose=True)
+    knn_clf = fkn.train('./train_dir', verbose=True)
     video_capture = cv2.VideoCapture(0)
     while True:
         data_prev = data.copy()
