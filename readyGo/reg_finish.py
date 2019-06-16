@@ -20,8 +20,8 @@ def finish_registraion():
     print(data)
     for user_tup in res:
         name = user_tup[0]
-        user_dict = next(item for item in data if data['name'] == name)
+        if name == 'unknown':
+            continue
+        user_dict = next((item for item in data if item['name'] == name), False)
         user_dict['available'] = 1
     video_capture.release()
-
-finish_registraion()
