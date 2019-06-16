@@ -21,4 +21,4 @@ def finish_registraion():
         if data != data_prev:
             requests.post('http://localhost:5000/admin', json=json.dump(data))
 
-# finish_registraion()
+finish_registraion()
