@@ -19,4 +19,4 @@ def finish_registraion():
             requests.post('http://localhost:5000/admin', json=data)
 
 
-finish_registraion()
+# finish_registraion()
