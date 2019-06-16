@@ -1,8 +1,9 @@
-from flask import Flask, render_template, Response, request, jsonify
+from flask import Flask, render_template, Response, request, jsonify, redirect, url_for
 # from camera import VideoCamera
 import time
 from flask_cors import CORS
 from file_system import *
+from reg_finish import finish_registraion
 
 
 app = Flask(__name__)
@@ -11,7 +12,15 @@ CORS(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('ticket.html')
+
+@app.route('/done')
+def done():
+    return render_template('ticket_done.html')
+
+@app.route('/adm')
+def admin():
+    return render_template('admin.html')
 
 
 @app.route('/registration', methods=['POST', 'GET'])
@@ -21,7 +30,10 @@ def add_blog_ajax():
         name = request.json['name']
         write_photo(name, image)
         print(data)
-        return "Done"
+        print("redirect")
+        return redirect(url_for('done'))
+    if request.method == 'GET':
+        return render_template('ticket.html')
 
 
 @app.route('/admin', methods=['POST', 'GET'])
@@ -40,6 +52,11 @@ def get_users_data():
         print(jsonify(data))
         # return render_template('admin.html', data=data)
         return (jsonify(data))
+    if request.method == 'POST':
+        status = int(request.data)
+        if status:
+            finish_registraion()
+        return "done"
     
 
 def gen(camera):
@@ -55,4 +72,4 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='127.0.0.1', debug=True)
