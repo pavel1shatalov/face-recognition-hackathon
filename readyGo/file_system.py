@@ -1,8 +1,10 @@
 import os
 import base64
+import requests
 
 # initializing global
 data = {}
+
 
 def write_photo(name, txt, photo_num=1):
     txt = txt[23:]
@@ -20,3 +22,4 @@ def write_photo(name, txt, photo_num=1):
         f.write(base64.b64decode(txt))
 
     data[name] = False
+    requests.post('http://localhost:5000/admin', json=data)
