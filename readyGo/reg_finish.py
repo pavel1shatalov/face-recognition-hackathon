@@ -24,4 +24,4 @@ def finish_registraion():
         user_dict['available'] = 1
     video_capture.release()
 
-# finish_registraion()
+finish_registraion()
