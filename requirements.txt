@@ -5,7 +5,7 @@ dlib==19.17.0
 face-recognition==1.2.3
 face-recognition-models==0.3.0
 Flask==1.0.3
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.10.1
